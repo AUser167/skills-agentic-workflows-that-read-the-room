@@ -16,6 +16,7 @@ network:
   allowed:
     - github.com
     - github.blog
+    - awesome-copilot.github.com
 ---
 
 # Update Mona's GitHub Info website
@@ -26,6 +27,7 @@ Use these sources:
 - `notes/mona-notes.md`
 - GitHub Blog: https://github.blog/latest/  # GitHub Blog
 - GitHub Changelog: https://github.blog/changelog/  # GitHub Changelog
+- Awesome Copilot Workflows: https://awesome-copilot.github.com/workflows/  # Awesome Copilot workflows
 
 Update `site/content/github-info.md` with concise, practical updates for readers. When content is taken
 from the GitHub Blog or GitHub Changelog, include a one-line source attribution.
@@ -37,8 +39,9 @@ changes and a controlled job opens the PR for Mona to review.
 Behavior and steps for the agent:
 
 1. Read `notes/mona-notes.md` to learn Mona's editorial preferences and any notes about the site.
-2. Web-fetch the GitHub Blog latest feed at `https://github.blog/latest/` and the GitHub Changelog at
-   `https://github.blog/changelog/` to find new items relevant to Mona's site.
+2. Web-fetch the GitHub Blog latest feed at `https://github.blog/latest/`, the GitHub Changelog at
+  `https://github.blog/changelog/`, and the Awesome Copilot Workflows index at
+  `https://awesome-copilot.github.com/workflows/` to find new items relevant to Mona's site.
 3. Summarize any relevant updates and add them under the `## Latest GitHub Updates` section in
    `site/content/github-info.md`. If the section does not exist, create it near the top of the content file.
 4. Prepare a branch and patch with the content updates and return the patch as the `create-pull-request` safe output.
@@ -46,5 +49,5 @@ Behavior and steps for the agent:
 
 Notes:
 - This workflow runs daily and on-demand via `workflow_dispatch`.
-- The agent is allowed `edit` and `web-fetch` tools and network access to `github.blog` and `github.com`.
+- The agent is allowed `edit` and `web-fetch` tools and network access to `github.blog`, `github.com`, and `awesome-copilot.github.com`.
 - The agent must not compile or write directly to `main`.
