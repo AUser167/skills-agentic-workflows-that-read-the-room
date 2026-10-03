@@ -6,11 +6,13 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+model: auto
 engine:
-  model: gpt-6
+  id: copilot
+  args: ["--allow-all-urls"]
 tools:
+  bash: ["cat", "curl"]
   edit:
-  web-fetch:
 network:
   allowed:
     - github.blog
@@ -28,7 +30,7 @@ safe-outputs:
 Keep the GitHub Info content current with useful, verified updates for Mona to review.
 
 1. Read `notes/mona-notes.md` and `site/content/github-info.md`.
-2. Use the web-fetch tool to read https://github.blog/latest/, https://github.blog/changelog/, and https://awesome-copilot.github.com/workflows/. Follow links on those pages and fetch the source when needed to verify details.
+2. Use `curl` to fetch https://github.blog/latest/, https://github.blog/changelog/, and https://awesome-copilot.github.com/workflows/. Follow links on those pages and fetch the source when needed to verify details. Network egress is limited to the configured allowlist.
 3. Select only recent, materially useful updates that fit Mona's practical editorial angle. Keep summaries concise, preserve existing useful content, and cite each item with its title, publication date when available, and a direct source link.
 4. Update `site/content/github-info.md` with a concise `Recent official updates` section containing up to three verified items. Do not add speculative claims or duplicate existing items.
 5. If there are no suitable new items or the file would not meaningfully improve, leave it unchanged and use the `noop` safe output with a brief reason.
