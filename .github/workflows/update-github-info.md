@@ -6,6 +6,8 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+engine:
+  model: gpt-6-luna
 tools:
   edit:
   web-fetch:
