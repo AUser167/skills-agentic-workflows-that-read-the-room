@@ -7,7 +7,7 @@ on:
 permissions:
   contents: read
 engine:
-  model: gpt-6-luna
+  model: gpt-6
 tools:
   edit:
   web-fetch:
